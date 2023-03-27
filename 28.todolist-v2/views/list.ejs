@@ -1,0 +1,37 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
+
+<div class="box">
+  <%newListItem.forEach(function(item){%>
+    <form action="/delete" method="post">
+    <div class="item">
+      <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()"/>
+    <p><%=item.name%></p>
+  </div>
+</form>
+    <%});%>
+
+
+  <form class="item" action="/" method="post">
+    <input
+      type="text"
+      name="newItem"
+      placeholder="New Item"
+      autocomplete="off"
+    />
+    <button type="submit" name="list" value=<%=listTitle %>>+</button>
+  </form>
+</div>
+
+<!--
+    <h1>Logic in HTML Files with EJS</h1>
+    <% // if(kindOfDay === "Saturday" || kindOfDay === "Sunday") { %>
+    <h1 style="color: orangered"><%= //kindOfDay %> ToDo List</h1>
+    <% //} else { %>
+    <h1 style="color: brown"><%= //kindOfDay %> ToDo List</h1>
+    <% //} %> -->
+
+<%- include("footer") -%>
